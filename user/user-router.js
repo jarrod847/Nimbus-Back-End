@@ -49,6 +49,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  Users.findById(id)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "failed to get user" });
+    });
+});
+
 function generateToken(user) {
   const payload = {
     subject: user.id,
