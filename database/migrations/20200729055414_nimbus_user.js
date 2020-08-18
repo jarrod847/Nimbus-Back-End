@@ -4,6 +4,7 @@ exports.up = function (knex) {
     user.string("displayName", 18).notNullable().unique();
     user.string("password", 255).notNullable();
     user.string("bio", 255);
+    user.string("img");
   });
 };
 
