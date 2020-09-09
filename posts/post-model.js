@@ -1,11 +1,16 @@
 const db = require("../database/config");
 
 module.exports = {
+  allPosts,
   addPost,
   findPost,
   findPostById,
   deletePost,
 };
+
+function allPosts() {
+  return db("posts");
+}
 
 function findPost() {
   return db("posts").select("id", "content");
