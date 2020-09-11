@@ -23,4 +23,10 @@ router.post("/sendpost", (req, res) => {
     });
 });
 
+router.delete("/postdlt", (req, res) => {
+  Posts.deletePost(req.params.id).then(() => {
+    res.status(200).json({ message: `didn't delete` });
+  });
+});
+
 module.exports = router;
