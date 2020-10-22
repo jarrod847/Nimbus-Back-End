@@ -7,10 +7,18 @@ exports.up = function (knex) {
     comments.string("img");
     comments
       .integer("user_id")
-      .unsighned()
+      .unsigned()
       .notNullable()
       .references("id")
       .inTable("user")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
+    comments
+      .integer("post_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("posts")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
   });
