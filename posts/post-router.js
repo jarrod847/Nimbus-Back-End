@@ -34,4 +34,14 @@ router.delete("/postdlt", (req, res) => {
     });
 });
 
+router.get("/userposts", (req, res) => {
+  Posts.findPostsByUser(req.params.id)
+    .then(() => {
+      res.status(200).json({ message: "was able to get users posts" });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "could not get users posts" });
+    });
+});
+
 module.exports = router;
