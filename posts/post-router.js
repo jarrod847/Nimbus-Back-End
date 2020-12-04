@@ -34,7 +34,7 @@ router.delete("/postdlt", (req, res) => {
     });
 });
 
-router.get("/userposts", (req, res) => {
+router.get("/userposts/:id", (req, res) => {
   Posts.findPostsByUser(req.params.id)
     .then(() => {
       res.status(200).json({ message: "was able to get users posts" });

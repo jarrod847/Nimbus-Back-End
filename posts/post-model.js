@@ -34,5 +34,5 @@ function deletePost(id) {
 }
 
 function findPostsByUser(UserId) {
-  return db("posts").where({ UserId });
+  return db("posts").where("user_id", UserId);
 }
