@@ -1,13 +1,13 @@
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex("table_name")
+  return knex("postComments")
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex("table_name").insert([
+      return knex("postComments").insert([
         {
           id: 1,
-          content: "that's a good one",
+          content: "thats a good one",
           likes: 2,
           reposts: 1,
           img: "",
@@ -20,7 +20,7 @@ exports.seed = function (knex) {
           likes: 1,
           reposts: 3,
           img: "",
-          user_id: 2,
+          user_id: 1,
           post_id: 1,
         },
         {
@@ -29,7 +29,7 @@ exports.seed = function (knex) {
           likes: 20,
           reposts: 0,
           img: "",
-          user_id: 2,
+          user_id: 1,
           post_id: 2,
         },
       ]);
