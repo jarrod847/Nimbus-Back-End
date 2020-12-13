@@ -2,26 +2,15 @@ const db = require("../database/config");
 
 module.exports = {
   allComments,
-  addComment,
-  findComment,
-  deleteComment,
+  // addComment,
+  // findCommentsByUser,
+  // findCommentsForPost,
   findCommentById,
+  deleteComment,
 };
 
 function allComments() {
   return db("postComments");
-}
-
-function addComment(comment) {
-  return db("postComments")
-    .insert(comment, "id")
-    .then(([id]) => {
-      return findCommentById(id);
-    });
-}
-
-function findComment() {
-  return db("postComments").select("id", "content");
 }
 
 function findCommentById(id) {
