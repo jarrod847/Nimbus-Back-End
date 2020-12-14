@@ -4,7 +4,7 @@ module.exports = {
   allComments,
   addComment,
   // findCommentsByUser,
-  // findCommentsForPost,
+  findCommentsForPost,
   findCommentById,
   deleteComment,
 };
@@ -29,4 +29,8 @@ function addComment(postId, payload) {
     .insert(payload)
     .select("*")
     .where(postId, payload.post_id);
+}
+
+function findCommentsForPost(post_id) {
+  return db("postComments").where("post_id", post_id);
 }
