@@ -36,4 +36,16 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("/user/:id", (req, res) => {
+  const id = req.params.id;
+  Comments.findCommentsByUser(req.params.id)
+    .then((comms) => {
+      res.status(200).json(comms);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not get comments by User" });
+    });
+});
+
 module.exports = router;

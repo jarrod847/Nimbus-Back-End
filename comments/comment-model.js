@@ -3,7 +3,7 @@ const db = require("../database/config");
 module.exports = {
   allComments,
   addComment,
-  // findCommentsByUser,
+  findCommentsByUser,
   findCommentsForPost,
   findCommentById,
   deleteComment,
@@ -33,4 +33,8 @@ function addComment(postId, payload) {
 
 function findCommentsForPost(post_id) {
   return db("postComments").where("post_id", post_id);
+}
+
+function findCommentsByUser(user_id) {
+  return db("postComments").where("user_id", user_id);
 }
