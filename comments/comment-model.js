@@ -2,7 +2,7 @@ const db = require("../database/config");
 
 module.exports = {
   allComments,
-  // addComment,
+  addComment,
   // findCommentsByUser,
   // findCommentsForPost,
   findCommentById,
@@ -19,4 +19,14 @@ function findCommentById(id) {
 
 function deleteComment(id) {
   return findCommentById(id).del(id);
+}
+
+function addComment(postId, payload) {
+  return db("postComments as comms")
+    .join("posts", function () {
+      this.on("posts.id", "=", "comms.post_id");
+    })
+    .insert(payload)
+    .select("*")
+    .where(postId, payload.post_id);
 }
