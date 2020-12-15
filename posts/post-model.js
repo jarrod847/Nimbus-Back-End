@@ -7,6 +7,7 @@ module.exports = {
   findPostById,
   deletePost,
   findPostsByUser,
+  updatePost,
 };
 
 function allPosts() {
@@ -35,4 +36,8 @@ function deletePost(id) {
 
 function findPostsByUser(UserId) {
   return db("posts").where("user_id", UserId);
+}
+
+function updatePost(id, changes) {
+  return db("posts").where({ id }).update(changes);
 }
