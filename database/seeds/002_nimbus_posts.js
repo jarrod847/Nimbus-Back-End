@@ -21,7 +21,14 @@ exports.seed = function (knex) {
           img: "",
           user_id: 1,
         },
-        { id: 3, content: "We out here tho", likes: 10, img: "", user_id: 1 },
+        {
+          id: 3,
+          content: "We out here tho",
+          likes: 10,
+          img: "",
+          reposts: 0,
+          user_id: 1,
+        },
       ]);
     });
 };

@@ -44,4 +44,16 @@ router.get("/userposts/:id", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  const id = req.params.id;
+  Posts.updatePost(id, req.body)
+    .then((changes) => {
+      res.status(200).json(req.body);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not update post" });
+    });
+});
+
 module.exports = router;
