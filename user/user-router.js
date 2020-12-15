@@ -41,7 +41,7 @@ router.post("/login", (req, res) => {
 router.get("/", (req, res) => {
   Users.find()
     .then((users) => {
-      res.json(users);
+      res.status(200).json(users);
     })
     .catch((err) => {
       console.log(err);
@@ -53,10 +53,22 @@ router.get("/:id", (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then((user) => {
-      res.json(user);
+      res.status(200).json(user);
     })
     .catch((err) => {
       res.status(500).json({ message: "failed to get user" });
+    });
+});
+
+router.put("/:id", (req, res) => {
+  const id = req.params.id;
+  Users.editUser(id, req.body)
+    .then(() => {
+      res.status(200).json(req.body);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "could not change user information" });
     });
 });
 
