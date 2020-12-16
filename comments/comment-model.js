@@ -27,7 +27,7 @@ function addComment(postId, payload) {
       this.on("posts.id", "=", "comms.post_id");
     })
     .insert(payload)
-    .select("*")
+    .select("content")
     .where(postId, payload.post_id);
 }
 
