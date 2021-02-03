@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Posts = require("./post-model");
 
-router.get("/posts", (req, res) => {
+router.get("/", (req, res) => {
   Posts.allPosts()
     .then((post) => {
       res.status(200).json(post);
