@@ -11,7 +11,20 @@ module.exports = {
 };
 
 function allPosts() {
-  return db("posts");
+  return db("posts as p")
+    .join("user as u", function () {
+      this.on("u.id", "=", "p.user_id");
+    })
+    .select(
+      "u.displayName",
+      "u.user_img",
+      "p.id",
+      "p.user_id",
+      "p.content",
+      "p.post_img",
+      "p.users_who_liked",
+      "p.users_who_reposted"
+    );
 }
 
 function findPost() {
@@ -35,7 +48,21 @@ function deletePost(id) {
 }
 
 function findPostsByUser(UserId) {
-  return db("posts").where("user_id", UserId);
+  return db("posts as p")
+    .join("user as u", function () {
+      this.on("u.id", "=", "p.user_id");
+    })
+    .where("user_id", UserId)
+    .select(
+      "u.displayName",
+      "u.user_img",
+      "p.id",
+      "p.user_id",
+      "p.content",
+      "p.users_who_liked",
+      "p.users_who_reposted",
+      "p.post_img"
+    );
 }
 
 function updatePost(id, changes) {
