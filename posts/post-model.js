@@ -11,7 +11,20 @@ module.exports = {
 };
 
 function allPosts() {
-  return db("posts");
+  return db("posts as p")
+    .join("user as u", function () {
+      this.on("u.id", "=", "p.user_id");
+    })
+    .select(
+      "u.id",
+      "u.displayName",
+      "u.user_img",
+      "p.id",
+      "p.content",
+      "p.likes",
+      "p.reposts",
+      "p.post_img"
+    );
 }
 
 function findPost() {

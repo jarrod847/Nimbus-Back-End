@@ -4,7 +4,7 @@ exports.up = function (knex) {
     posts.string("content", 255).notNullable();
     posts.integer("likes");
     posts.integer("reposts");
-    posts.string("img");
+    posts.string("post_img");
     posts
       .integer("user_id")
       .unsigned()
