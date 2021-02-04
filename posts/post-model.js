@@ -16,14 +16,14 @@ function allPosts() {
       this.on("u.id", "=", "p.user_id");
     })
     .select(
-      "u.id",
       "u.displayName",
       "u.user_img",
       "p.id",
+      "p.user_id",
       "p.content",
-      "p.likes",
-      "p.reposts",
-      "p.post_img"
+      "p.post_img",
+      "p.users_who_liked",
+      "p.users_who_reposted"
     );
 }
 
@@ -48,7 +48,21 @@ function deletePost(id) {
 }
 
 function findPostsByUser(UserId) {
-  return db("posts").where("user_id", UserId);
+  return db("posts as p")
+    .join("user as u", function () {
+      this.on("u.id", "=", "p.user_id");
+    })
+    .where("user_id", UserId)
+    .select(
+      "u.displayName",
+      "u.user_img",
+      "p.id",
+      "p.user_id",
+      "p.content",
+      "p.users_who_liked",
+      "p.users_who_reposted",
+      "p.post_img"
+    );
 }
 
 function updatePost(id, changes) {
