@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("posts", (posts) => {
-    posts.increments("id");
+    posts.increments("id").unique();
     posts.string("content", 255).notNullable();
     posts.integer("likes");
     posts.integer("reposts");

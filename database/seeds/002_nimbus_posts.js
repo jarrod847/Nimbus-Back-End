@@ -12,6 +12,7 @@ exports.seed = function (knex) {
           reposts: 5,
           img: "",
           user_id: 1,
+          user_displayName: "Rodney",
         },
         {
           id: 2,
@@ -19,7 +20,8 @@ exports.seed = function (knex) {
           likes: 5,
           reposts: 1,
           img: "",
-          user_id: 1,
+          user_id: 2,
+          user_displayName: "TimtheMan",
         },
         {
           id: 3,
@@ -28,6 +30,7 @@ exports.seed = function (knex) {
           img: "",
           reposts: 0,
           user_id: 1,
+          user_displayName: "Rodney",
         },
       ]);
     });
