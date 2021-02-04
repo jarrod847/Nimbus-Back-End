@@ -26,8 +26,6 @@ exports.seed = function (knex) {
           content: "We out here tho",
           post_img: "",
           user_id: 1,
-          users_who_liked: [],
-          users_who_reposted: [],
         },
       ]);
     });
